@@ -23,16 +23,8 @@ jobs:
         with:
           deno-version: v2.x
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-
-      - name: Install step
-        run: "cd frontend && npm install"
-
       - name: Build step
-        run: "cd frontend && npm run build"
+        run: "cd frontend && npm run build &&  npm install"
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
@@ -40,5 +32,5 @@ jobs:
           project: "austinebyag-admin-dashb-17"
           entrypoint: "main.ts"
           root: "."
-          include: frontend/dist api main.ts deno.json
-          exclude: frontend/node_modules frontend/src .git
+          
+          
