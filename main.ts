@@ -16,12 +16,12 @@ app.route('/api/editUser', editUser);
 app.route('/api/deleteUser', deleteUser);
 // Serve static files
 app.use('/*', serveStatic({
-  root: './frontend/dist',
+  root: './Frontend/dist',
   // Optional: you can set `index: 'index.html'` to automatically serve index.html
 }));
 
 app.get('/*', async (c) => {
-  const filePath = new URL('./frontend/dist/index.html', import.meta.url).pathname;
+  const filePath = new URL('./Frontend/dist/index.html', import.meta.url).pathname;
   const data = await Deno.readFile(filePath);
   return c.body(data.buffer, 200, {
     'content-type': 'text/html'
